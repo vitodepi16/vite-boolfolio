@@ -76,7 +76,7 @@ export default {
   name: "App",
   data() {
     return {
-      title: "Le mie API",
+      title: "I miei progetti",
       projects: [],
 
       apiUrl: "http://127.0.0.1:8001/api",
