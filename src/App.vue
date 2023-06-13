@@ -38,6 +38,35 @@
         </div>
       </div>
     </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <button
+            :class="{ 'page-link': true, disabled: currentPage === 1 }"
+            @click="getData(currentPage - 1)"
+          >
+            Previous
+          </button>
+        </li>
+        <li class="page-item" v-for="n in lastPage">
+          <button
+            :class="{ 'page-link': true, active: currentPage === n }"
+            @click="getData(n)"
+          >
+            {{ n }}
+          </button>
+        </li>
+
+        <li class="page-item">
+          <button
+            :class="{ 'page-link': true, disabled: currentPage === 4 }"
+            @click="getData(currentPage + 1)"
+          >
+            Next
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 <script>
@@ -49,14 +78,25 @@ export default {
     return {
       title: "Le mie API",
       projects: [],
+
       apiUrl: "http://127.0.0.1:8001/api",
+      currentPage: 1,
+      lastPage: null,
     };
   },
   methods: {
-    getData() {
-      axios.get(`${this.apiUrl}/projects`).then((res) => {
-        this.projects = res.data.results.data;
-      });
+    getData(numPage) {
+      axios
+        .get(`${this.apiUrl}/projects`, {
+          params: {
+            page: numPage,
+          },
+        })
+        .then((res) => {
+          this.projects = res.data.results.data;
+          this.currentPage = res.data.results.current_page;
+          this.lastPage = res.data.results.last_page;
+        });
     },
   },
   mounted() {
