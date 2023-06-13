@@ -21,6 +21,11 @@
             </li>
             <li class="list-group-item">Creato il: {{ project.created_at }}</li>
           </ul>
+          <div v-for="tag in project.tags">
+            <p class="badge mt-2 rounded-pill text-bg-success">
+              {{ tag.name }}
+            </p>
+          </div>
           <div class="card-body d-flex">
             <form action="{{ project.slug }}" method="POST">
               <a class="btn-outline-primary btn mx-auto" href=""
