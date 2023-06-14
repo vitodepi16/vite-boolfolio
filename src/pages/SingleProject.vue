@@ -1,9 +1,24 @@
 <template>
-  <div v-if="project">
-    <h1>{{ project.title }}</h1>
-  </div>
-  <div v-else>
-    <LoaderApp />
+  <div class="container">
+    <div v-if="project" class="bg-dark text-white p-4 mt-5">
+      <h1 class="text-center text-uppercase">{{ project.title }}</h1>
+      <div class="">
+        <img class="img-fluid" :src="project.image" alt="" srcset="" />
+      </div>
+
+      <p class="p-3">{{ project.body }}</p>
+      <p class="">
+        Tecnologia utilizzata in questo progetto: {{ project.type.name }}
+      </p>
+      <span
+        class="badge rounded-pill bg-danger mx-1"
+        v-for="tag in project.tags"
+        >{{ tag.name }}</span
+      >
+    </div>
+    <div v-else>
+      <LoaderApp />
+    </div>
   </div>
 </template>
 

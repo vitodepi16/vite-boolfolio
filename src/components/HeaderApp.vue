@@ -1,8 +1,16 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar mynav navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <div class="zone-logo">
+          <a class="navbar-brand text-white" href="/"
+            ><img
+              src="image/logo-portfolio.jpeg"
+              class="rounded p-2 mt-2 float-start img-fluid"
+              alt=""
+          /></a>
+        </div>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -23,6 +31,9 @@
             </li>
           </ul>
         </div>
+        <a href="/" class="btn btn-outline-primary" type="button"
+          >Vai al login</a
+        >
       </div>
     </nav>
   </header>
@@ -56,4 +67,27 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "../assets/partials/variables.scss" as *;
+.mynav {
+  background-color: $my-navbar;
+  .nav-link {
+    color: white;
+    text-transform: capitalize;
+    &:hover {
+      color: #fb2576;
+    }
+  }
+  .btn-outline-primary {
+    border-color: $my-navbar;
+    color: white;
+    &:hover {
+      background-color: $my-navbar;
+      color: #fb2576;
+    }
+  }
+}
+.zone-logo {
+  width: 150px;
+}
+</style>
