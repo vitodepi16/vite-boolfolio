@@ -1,10 +1,6 @@
 <template>
-  <div class="loading">
-    <div class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
+  <div>
+    <h1 class="mx-auto fs-1">PAGE NOT FOUND</h1>
   </div>
 </template>
 
@@ -12,16 +8,4 @@
 export default {};
 </script>
 
-<style lang="scss" scoped>
-.loading {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: grid;
-  place-items: center;
-  background-color: #202020;
-  color: white;
-}
-</style>
+<style lang="scss" scoped></style>
