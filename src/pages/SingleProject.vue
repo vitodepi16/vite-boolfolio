@@ -7,14 +7,31 @@
       </div>
 
       <p class="p-3">{{ project.body }}</p>
-      <p class="">
-        Tecnologia utilizzata in questo progetto: {{ project.type.name }}
-      </p>
-      <span
-        class="badge rounded-pill bg-danger mx-1"
-        v-for="tag in project.tags"
-        >{{ tag.name }}</span
-      >
+      <div class="d-flex justify-content-between">
+        <p class="w-100">
+          Tecnologia utilizzata in questo progetto:
+          <strong> {{ project.type.name }}</strong>
+        </p>
+        <div class="img-box">
+          <img
+            :src="getImageUrl(project.type.image)"
+            class="imag-fluid"
+            alt="ciao"
+          />
+        </div>
+      </div>
+      <div class="category">
+        <span
+          class="badge rounded-pill text-bg-info mx-1"
+          v-for="tag in project.tags"
+          >{{ tag.name }}</span
+        >
+      </div>
+      <div class="d-grid gap-2 d-md-block">
+        <a class="btn btn-outline-primary btn-lg mx-auto mt-3"
+          >Torna ai tuoi progetti</a
+        >
+      </div>
     </div>
     <div v-else>
       <LoaderApp />
@@ -37,6 +54,10 @@ export default {
     };
   },
   methods: {
+    getImageUrl(imageFile) {
+      console.log(`../../image/${imageFile}`);
+      return new URL("../../image/" + imageFile, import.meta.url).href;
+    },
     getProject() {
       axios
         .get(`${this.apiUrl}/projects/${this.$route.params.slug}`)
@@ -55,4 +76,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.img-box {
+  width: 100px;
+  img {
+    width: 100%;
+  }
+}
+</style>

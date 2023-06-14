@@ -24,7 +24,15 @@
               <li class="list-group-item bg-dark text-white">
                 Progetto creato usando:
                 <strong> {{ project.type.name }}</strong>
+                <div class="img-box">
+                  <img
+                    :src="getImageUrl(project.type.image)"
+                    class="imag-fluid"
+                    alt="ciao"
+                  />
+                </div>
               </li>
+
               <li class="list-group-item bg-dark text-white">
                 Creato il: {{ project.created_at }}
               </li>
@@ -108,6 +116,10 @@ export default {
     };
   },
   methods: {
+    getImageUrl(imageFile) {
+      console.log(`../../image/${imageFile}`);
+      return new URL("../../image/" + imageFile, import.meta.url).href;
+    },
     getData(numPage) {
       axios
         .get(`${this.apiUrl}/projects`, {
@@ -135,5 +147,11 @@ export default {
 }
 .page-item {
   border-color: $my-primary;
+}
+.img-box {
+  width: 30px;
+  img {
+    width: 100%;
+  }
 }
 </style>
