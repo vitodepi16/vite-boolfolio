@@ -31,7 +31,10 @@
             </li>
           </ul>
         </div>
-        <a href="/" class="btn btn-outline-primary" type="button"
+        <a
+          href="http://127.0.0.1:8000/login"
+          class="btn btn-outline-primary"
+          type="button"
           >Vai al login</a
         >
       </div>
